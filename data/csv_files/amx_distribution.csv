@@ -1,0 +1,33 @@
+place,country,latitude,longitude,system
+Delft,The Netherlands,52.011576,4.357067,Man-made system
+Nijmegen,The Netherlands,51.812562,5.837226,Man-made system
+Dubendorf,Switzerland,47.396965,8.618639,Man-made system
+Hannover,Germany,52.37392,9.735603,Man-made system
+Kumamoto,Japan,32.806065,130.705978,Man-made system
+Sydney,Australia,-33.870453,151.208755,Man-made system
+"Athens, GA",U.S.A,33.950001,-83.38331,Man-made system
+Kirinnya Jinja,Uganda,0.331944,32.669187,Man-made system
+Ghent,Belgium,51.054342,3.717424,Man-made system
+Pitsea,U.K,51.56491,0.505078,Man-made system
+Hangzhou,China,30.25,120.166664,Man-made system
+Gyeongsan,Korea,35.825056,128.741544,Man-made system
+Kanagawa,Japan,35.476901,139.629431,Man-made system
+Lyngby,Denmark,55.763515,12.494943,Man-made system
+Mechernich,Germany,50.591704,6.653072,Man-made system
+Santiago de Compostela,Spain,42.878212,-8.544844,Man-made system
+Yongin,Korea,37.233332,127.199999,Man-made system
+Beijing,China,39.913818,116.363625,Man-made system
+Chiba,Japan,35.605057,140.123306,Man-made system
+Guangzhou,China,23.128994,113.25325,Man-made system
+Perth,Australia,-31.953512,115.857048,Man-made system
+Skagerrak,North Sea,56.473998,9.566831,Natural system
+Black Sea,Black Sea,43.413029,34.299316,Natural system
+Golfo Dulce,Costa Rica,8.61286,-83.30606,Natural system
+Thames Estuary,U.K,51.585574,-0.616075,Natural system
+Arctic Sea,Arctic Sea,79.13864,-3.23897,Natural system
+Mertz Sea,Antarctica,-67.499998,144.749997,Natural system
+Randers Fjord,Denmark,56.558333,10.239444,Natural system
+Benguela OMZ,Namibia,-12.590516,13.416501,Natural system
+Chesapeake Bay,U.S.A,30.51645,-97.7392,Natural system
+Gullmarsfjorden,Sweden,58.2483,11.333,Natural system
+Long Island,U.S.A,41.819328,-71.47361,Natural system

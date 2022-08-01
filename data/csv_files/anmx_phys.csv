@@ -1,0 +1,12 @@
+physiological characteristics,Ca. Kuenenia Stuttgariensis,Ca. Brocadia sinica,Ca. Brocadia caroliniensis,Ca. Brocadia fulgida,Ca. Brocadia anammoxidans,Ca. Brocadia sapporoensis,Ca. Jettenia caeni,Ca. Jettenia ecosi,Ca. Scalindua sp,Ca. Scalindua profunda
+Growth rate (h-1),0.0026-0.0035,0.0041,0.0033-0.0049,n.d.,0.0027,0.0082,0.002,0.0022,0.002,0.002
+Growth temperature (C),25-37,25-45,30,30-33,20-43,20-45,20-42.5,10-45,10-30,15-45
+Growth pH,6.5-9.0,7.0-8.8,6.8-7.6,7.2-8.3,6.7-8.3,n.d.,6.5-8.5,4.5-9,6.0-8.5,7-8
+KS for nitrite (muM),0.2-3,86 +/- 4,370 +/- 40, 350 +/- 90,< 5,5.0 +/- 2.5,35.6 +/- 0.92,n.d.,0.45,n.d.
+KS for ammonium (muM),n.d.,28 +/- 4,530 +/- 50, 640 +/- 130,< 5,n.d.,17.1 +/- 4.3,n.d.,3,n.d.
+Activation energy (kJ/mol),n.d.,56 +/- 3,n.d.,65.7, 70,56,n.d.,n.d,81.4 +/- 3,n.d.
+Nitrite tolerance (mM),"13, 25",< 16, 10.8,13.2, 7,11.6, 11,n.d.,7.5,n.d.
+Phosphate tolerance (mM),"20, 21",< 20,25.3,> 50,n.d.,n.d.,n.d.,n.d.,n.d.,n.d.
+Salinity tolerance,200 mM,< 3%,< 90.7 mM,n.d.,n.d.,n.d.,68 mM,n.d.,1.5-4%,3.3%
+Dissolved oxygen tolerance (muM),0-200,< 63,120,70,< 1,n.d,n.d.,n.d.,n.d.,n.d.
+Reference,Egli et al. 2001; Strous et al. 2006; van der Star et al. 2008; Rattray et al. 2008; Kartal et al. 2012; Hu et al. 2013b; Kartal et al. 2013; Zhao et al. 2014,"Oshiki et al. 2011, 2013a, b",Puyol et al. 2013; Carvajal-Arroyo et al. 2013,"Kartal et al. 2008, 2013; Gori et al. 2011; Carvajal-Arroyoet al. 2013; Puyol et al. 2013","Strous et al. 1998, 1999b; Jetten et al. 2005",Narita et al. 2017,Rattray et al. 2008; Ali et al. 2015,Botchkova et al. 2018,Awata et al. 2013,"van de Vossenberg et al. 2008, 2013"
