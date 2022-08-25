@@ -74,12 +74,12 @@ if select=='Overview':
     st.write("Anaerobic ammonium-oxidizing bacteria are a group of chemolithoautotroph that oxidize ammonium in the presence of nitrite as an electron acceptor and produce dinitrogen gas as the end product under anaerobic conditions (Eq.1). It's well known that biological oxidation of ammonium usually occurs in aerobic or low-oxygen systems, so how these microorganisms are capable of performing such reaction anaerobically?. Undoubtedly, the process would proceed via intermediates and partial reactions. ")
     cl1,clt,cl3=st.columns([1,1,1])
     with clt:
-        st.image("data/figures/eq1.jpg",width=300)
+        st.image("data/figures/main_equation.jpg",width=300)
     st.markdown('')
     st.write("At the beginning of anammox discovery, *Van de Graaf et al.(1997)* proposed a three-step process with hydroxylamine and hydrazine as key intermediates. The first step involved reduction of nitrite to hydroxylamine by hydroxylamine oxidoreductase, an enzyme that is present in aerobic ammonium-oxidizing bacteria and catalyzes the oxidation of hydroxylamine to nitrite (*Hooper et al. 1997*). The next step comprised the formation of hydrazine by condensation of hydroxylamine and ammonium. The last step was oxidation of hydrazine to generate dinitrogen gas. Later, genomics and proteomics analysis of K. stuttgartiensis's whole-cell revealed the presence of genes coding for nitric oxide oxidoreductase, which suggested nitric oxide (NO) to be an intermediate instead of hydroxylamine (NH2OH) (*Strous et al. 2006*). Based on these analysis, dinitrogen formation would be the result of the four-electron oxidation of hydrazine, catalyzed by an HAO-like enzyme, called hydrazine dehydrogenase (HDH) (Eq. 4). These four electrons would then lead to nitrite reduction by No-generating enzyme(s) (Eq. 2) and hydrazine production by hydrazine synthase (HZS) (Eq. 3).")
     cl1,clt,col3=st.columns([1,2.2,1])
     with clt:
-        st.image('data/figures/3 reactions.jpg',width=500)
+        st.image('data/figures/reactions.jpg',width=500)
     st.markdown('')
     st.write('**>>> Hydrazine synthase (HZS)**') 
     st.write('HZS is a membre of the hydroxylamine oxidoreductase-like enzymes family that catalyzes the formation of hydrazine by condensation of ammonium and NO. The crystal structure of this multicomplex enzyme shows a dimer of heterotrimers αβγ where each of which has c-type cytochromes containing multiple active sites. According to the crystal structure, hydrazine syntesis would involve a reduction of nitric oxide to hydroxylamine at the active site of the γ-subnit, followed by a condensation of ammonium with hydroxylamine to produce hydrazine at the active site of the α-subnit (*Andreas Dielt et al. 2015*).')
