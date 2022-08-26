@@ -27,7 +27,7 @@ if select=='Overview':
     Streamlit - Python - Biopython - Pandas- Py3dmol - Matplotlib - Leafmap\n\n
     It is maintained by [Yassine OUCHEN](https://github.com/ouchen-bio/Anammox-Bacteria-Database)
     Email: yassine.ouchen2021@gmail.com
-    LinkedIn: [Click Here](www.linkedin.com/in/yassine-ouchen-be)
+    LinkedIn: [Click Here](https://www.linkedin.com/in/yassine-ouchen-be)
     ''')
     # Title
     cl1,cl2,col3=st.columns([1,2.4,1])
@@ -737,7 +737,7 @@ else:
     Streamlit - Python - Biopython - Pandas- Py3dmol - Matplotlib - Leafmap\n\n
     It is maintained by [Yassine OUCHEN](https://github.com/ouchen-bio/Anammox-Bacteria-Database)
     Email: yassine.ouchen2021@gmail.com
-    LinkedIn: [Click Here](www.linkedin.com/in/yassine-ouchen-be)
+    LinkedIn: [Click Here](https://www.linkedin.com/in/yassine-ouchen-be)
     ''')
     st.subheader('References')
     st.markdown('***')
