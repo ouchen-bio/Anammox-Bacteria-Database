@@ -690,7 +690,7 @@ elif select=='Genomics & Proteomics':
         elif select_species=='Ca. Scalindua Arabica':
             select_strain=st.selectbox('Select strain/Isolate',['Scalindua arabica isolate SuakinDeep_MAG55_1'])
             if select_strain=='Scalindua arabica isolate SuakinDeep_MAG55_1':
-                contig_list=['JAANXD0{}'.format(i) for i in range(10000001,10000103)]
+                contig_list=['JAANXD0{}'.format(i) for i in range(10000002,10000103)]
                 contig_menu=st.selectbox('Select Contig',contig_list)
                 ANID_LTGN(contig_menu)
         elif select_species=='Ca. Scalindua Brodae':
