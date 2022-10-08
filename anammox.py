@@ -93,7 +93,7 @@ if select=='Overview':
     st.write('The following web-integrated application enables 3D visualization of anammox key enzymes. This app is powred by Py3Dmol.')
     #proteins 3d structure
     st.markdown("***")
-    cly,cls,clx=st.columns([2.7,.16,.74])
+    cly,cls,clx=st.columns([2.5,.16,.74])
     with cls:
         st.write('.')
     with clx:
