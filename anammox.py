@@ -93,7 +93,9 @@ if select=='Overview':
     st.write('The following web-integrated application enables 3D visualization of anammox key enzymes. This app is powred by Py3Dmol.')
     #proteins 3d structure
     st.markdown("***")
-    cly,clx=st.columns([2.35,.66])
+    cly,cls,clx=st.columns([2.34,.05,.66])
+    with cls:
+        st.write('')
     with clx:
         prot_name={'Hydrazine synthase':'5C2V','Hydrazine dehydrogenase':'6HIF','Cd1 nitrite reductase Nirs':'6TSI','Nitrite oxidoreductase':'7b04'}
         protein=st.selectbox('Select Enzyme :',prot_name)
