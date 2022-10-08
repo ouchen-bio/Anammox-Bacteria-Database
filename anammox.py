@@ -188,7 +188,7 @@ if select=='Overview':
     #interactive map
     in_csv='data/csv_files/amx_distribution.csv'
     Map=leafmap.Map()
-    Map.add_points_from_xy(in_csv,x='longitude',y='latitude',color_column='system',icon_names=['gear','leaf'],add_legend=True)
+    Map.add_points_from_xy(in_csv,x='longitude',y='latitude',color_column='system',icon_names=['leaf','recycle'],add_legend=True,spin=True)
     #Map.add_xy_data(in_csv,x='Longitude',y='Latitude')
     st.markdown('***')
     Map.to_streamlit()
