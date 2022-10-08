@@ -108,7 +108,7 @@ if select=='Overview':
         xyzview1=py3Dmol.view(query='pdb:'+prot_name.get(protein))
         xyzview1.setStyle({style:{'color':'spectrum'}})
         xyzview1.setBackgroundColor(b_color)
-        showmol(xyzview1,height=500,width=800)
+        showmol(xyzview1,height=500,width=750)
     st.markdown('***')
     #Physiology
     st.markdown('')
