@@ -798,7 +798,7 @@ elif select=="BLAST":
                     st.write("**Subject end**: ", hit[15])
                     st.markdown("***")
             else:
-                st.write("No hits found.")
+                st.warning("⛔ No hits found.")
                         
     
     if gene_entry=="Input Sequence":
@@ -809,7 +809,7 @@ elif select=="BLAST":
         if st.sidebar.button('🔍 Search'):
             #Check if the user has entered a sequence
             if not input_seq:
-                st.warning("warning: Please Enter a Gene Gequence.")
+                st.warning("warning ⚠️: Please Enter a Gene Gequence.")
             else:
                 blast_search(known_seq,threshold_identity,threshold_coverage)
                 
@@ -820,7 +820,7 @@ elif select=="BLAST":
         threshold_coverage = st.sidebar.slider('Coverage %', 50, 100, 80)
         if st.sidebar.button('🔍 Search'):
             if not file_uploader:
-                st.warning("warning: Please Upload a FASTA File.")
+                st.warning("warning ⚠️: Please Upload a FASTA File.")
             else:
                 # Converting Genbank Format Into A Readable Streamlit Format
                 if file_uploader is not None:
