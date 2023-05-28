@@ -11,11 +11,15 @@ from Bio.SeqUtils.ProtParam import ProteinAnalysis
 from collections import Counter
 import matplotlib.pyplot as plt
 from http.client import IncompleteRead
+from Bio.Blast import NCBIWWW, NCBIXML
+from Bio.Seq import Seq
+import io
+import base64
 # Page config
 st.set_page_config(layout='wide')
 # Menu bar
 with st.sidebar:
-    select=option_menu(menu_title='Menu',options=['Overview','Genomics & Proteomics','References'],icons=['book-half','infinity','journal-text','file-earmark-person'],default_index=0,styles={'container':{'background-color':'#FFFFFF'},'nav-link':{'font-size':'14px','text-align':'left'},'nav-link-selected':{'background-color':'#0557FD'}})
+    select=option_menu(menu_title='Menu',options=['Overview','Genomics & Proteomics','BLAST','References'],icons=['book-half','infinity','search','journal-text','file-earmark-person'],default_index=0,styles={'container':{'background-color':'#FFFFFF'},'nav-link':{'font-size':'14px','text-align':'left'},'nav-link-selected':{'background-color':'#0557FD'}})
 #############################################################################################################################################The Overview
 ############################################################################################################################################
 if select=='Overview':
@@ -728,7 +732,107 @@ elif select=='Genomics & Proteomics':
         select_species=st.selectbox('Select Species',['Ca. Anammoxoglobus Propionicus'])
         st.markdown('')
         st.write('Complete genome is not available')
+#############################################################################################################################################Blast
+############################################################################################################################################
+elif select=="BLAST":
+    st.sidebar.info(
         
+        """
+        This tool uses the BLAST algorithm from Biopython to search for similar gene(s) in anammox bacteria by performing sequence
+        comparisons against a known gene of interest.
+
+        The tool utilizes the NCBI BLAST service to perform the search. Please make sure you have an internet connection to access the
+        service.
+        
+        """
+    )
+    
+    gene_entry=st.sidebar.radio('',["Input Sequence","Import FASTA"],horizontal=True)
+    
+    def blast_search(known_seq,threshold_identity,threshold_coverage):
+        try:
+            # Perform the BLAST search
+            result_handle = NCBIWWW.qblast('blastn', "nt", known_seq, entrez_query='anammox')
+            # parse the BLAST results
+            blast_record = NCBIXML.read(result_handle)
+            #xml_results = result_handle.getvalue().encode("utf-8")
+            #b64 = base64.b64encode(xml_results).decode()
+        ####### Handle errors starts ########
+        except Bio.Blast.NCBIDeathError:
+            st.write('NCBI servers are unavailable or the BLAST search has been terminated')
+        except Bio.Blast.Record.ParseException:
+            st.write('BLAST search returned an invalid or incomplete result')
+        except Bio.Blast.Record.BlastError as error:
+            st.write('BLAST search returned an error message:', error)
+        except Bio.Blast.Record.BlastWarning as warning:
+            st.write('BLAST search returned a warning message:', warning)
+        ####### Handle errors ends ########
+        else:
+            filtered_hits = []
+            for alignment in blast_record.alignments:
+                for hsp in alignment.hsps:
+                    query_length = len(known_seq)
+                    identity=(float(hsp.identities) / float(hsp.align_length)) * 100.0
+                    coverage=(float(hsp.align_length) / float(query_length)) * 100.0
+                    if identity >= threshold_identity and coverage >= threshold_coverage:
+                        filtered_hits.append((alignment.title, hsp.score, hsp.bits, identity, coverage, hsp.expect,
+                                                 hsp.align_length, query_length,hsp.query_start,hsp.query_end, hsp.query[0:75] + '...',
+                                                 hsp.match[0:75] + '...', hsp.sbjct[0:75] + '...', alignment.length, hsp.sbjct_start, 
+                                              hsp.sbjct_end))
+            if len(filtered_hits) > 0:
+                st.subheader("Search results")
+                st.markdown("***")
+                #filename = "blast_results.xml"
+                #st.download_button("Download BLAST results as XML", data=xml_results, file_name=filename, mime="txt/xml")
+                for hit in filtered_hits:
+                    st.write("**Alignment**: ", hit[0])
+                    data = [[hit[1],hit[2],hit[3],hit[4],hit[5],hit[6],hit[7],hit[13]]]
+                    statistics = pd.DataFrame(data,columns=["Score","Bit Score","Identity (%)","Coverage (%)","E-Value",
+                                                            "Alignment Length (bp)","Query Length (bp)","Subject Length (bp)"])
+                    st.dataframe(statistics)
+                    st.write("**Query start**: ", hit[8])
+                    st.write("**Query end**: ", hit[9])
+                    st.write(hit[10])
+                    st.write(hit[12])
+                    st.write("**Subject start**: ", hit[14])
+                    st.write("**Subject end**: ", hit[15])
+                    st.markdown("***")
+            else:
+                st.write("No hits found.")
+                        
+    
+    if gene_entry=="Input Sequence":
+        input_seq=st.sidebar.text_area('',height=120)    
+        known_seq=input_seq.upper()
+        threshold_identity = st.sidebar.slider('Identity %', 50, 100, 80)
+        threshold_coverage = st.sidebar.slider('Coverage %', 50, 100, 80)
+        if st.sidebar.button('🔍 Search'):
+            #Check if the user has entered a sequence
+            if not input_seq:
+                st.warning("warning: Please Enter a Gene Gequence.")
+            else:
+                blast_search(known_seq,threshold_identity,threshold_coverage)
+                
+    else:
+        # Create Uploader
+        file_uploader=st.sidebar.file_uploader('',type=["fasta"])
+        threshold_identity = st.sidebar.slider('Identity %', 50, 100, 80)
+        threshold_coverage = st.sidebar.slider('Coverage %', 50, 100, 80)
+        if st.sidebar.button('🔍 Search'):
+            if not file_uploader:
+                st.warning("warning: Please Upload a FASTA File.")
+            else:
+                # Converting Genbank Format Into A Readable Streamlit Format
+                if file_uploader is not None:
+                    byte_str=file_uploader.read()
+                    text_obj=byte_str.decode("UTF-8")
+                    seq_object=SeqIO.parse(io.StringIO(text_obj),"fasta")
+                    sequences=[]
+                    for record in seq_object:
+                        sequences.append(record.seq)
+                    for known_seq in sequences:
+                        blast_search(known_seq,threshold_identity,threshold_coverage)
+                        
 #############################################################################################################################################References
 ############################################################################################################################################
 else:
