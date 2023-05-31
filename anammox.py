@@ -749,10 +749,10 @@ elif select=="BLAST":
     
     gene_entry=st.sidebar.radio('',["Input Sequence","Import FASTA"],horizontal=True)
     
-    def blast_search(known_seq,threshold_identity,threshold_coverage):
+    def blast_search(database,known_seq,threshold_identity,threshold_coverage):
         try:
             # Perform the BLAST search
-            result_handle = NCBIWWW.qblast('blastn', "nt", known_seq, entrez_query='anammox')
+            result_handle = NCBIWWW.qblast('blastn', database, known_seq, entrez_query='anammox')
             # parse the BLAST results
             blast_record = NCBIXML.read(result_handle)
             #xml_results = result_handle.getvalue().encode("utf-8")
@@ -804,6 +804,7 @@ elif select=="BLAST":
     if gene_entry=="Input Sequence":
         input_seq=st.sidebar.text_area('',height=120)    
         known_seq=input_seq.upper()
+        database = st.sidebar.selectbox('Database',['nt','est','TSA'])
         threshold_identity = st.sidebar.slider('Identity %', 50, 100, 80)
         threshold_coverage = st.sidebar.slider('Coverage %', 50, 100, 80)
         if st.sidebar.button('🔍 Search'):
@@ -811,11 +812,12 @@ elif select=="BLAST":
             if not input_seq:
                 st.warning("warning ⚠️: Please Enter a Gene Gequence.")
             else:
-                blast_search(known_seq,threshold_identity,threshold_coverage)
+                blast_search(database,known_seq,threshold_identity,threshold_coverage)
                 
     else:
         # Create Uploader
         file_uploader=st.sidebar.file_uploader('',type=["fasta"])
+        database = st.sidebar.selectbox('Database',['nt','est','TSA'])
         threshold_identity = st.sidebar.slider('Identity %', 50, 100, 80)
         threshold_coverage = st.sidebar.slider('Coverage %', 50, 100, 80)
         if st.sidebar.button('🔍 Search'):
@@ -831,7 +833,7 @@ elif select=="BLAST":
                     for record in seq_object:
                         sequences.append(record.seq)
                     for known_seq in sequences:
-                        blast_search(known_seq,threshold_identity,threshold_coverage)
+                        blast_search(database,known_seq,threshold_identity,threshold_coverage)
                         
 #############################################################################################################################################References
 ############################################################################################################################################
