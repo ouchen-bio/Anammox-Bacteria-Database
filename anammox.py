@@ -101,7 +101,7 @@ if select=='Overview':
     with cls:
         st.write('.')
     with clx:
-        prot_name={'HZS':'5C2V','HDH':'6HIF','NirS':'6TSI','NXR':'7b04'}
+        prot_name={'NirS':'6TSI', 'HZS':'5C2V','HDH':'6HIF','NXR':'7b04'}
         protein=st.selectbox('Select Enzyme :',prot_name)
         st.markdown('***')
         style=st.radio('Select Style :',['cartoon','line','sphere','stick'])
@@ -758,14 +758,11 @@ elif select=="BLAST":
             #xml_results = result_handle.getvalue().encode("utf-8")
             #b64 = base64.b64encode(xml_results).decode()
         ####### Handle errors starts ########
-        except Bio.Blast.NCBIDeathError:
-            st.write('NCBI servers are unavailable or the BLAST search has been terminated')
-        except Bio.Blast.Record.ParseException:
-            st.write('BLAST search returned an invalid or incomplete result')
-        except Bio.Blast.Record.BlastError as error:
-            st.write('BLAST search returned an error message:', error)
-        except Bio.Blast.Record.BlastWarning as warning:
-            st.write('BLAST search returned a warning message:', warning)
+        except IncompleteRead:
+            st.write('BLAST search returned an invalid or incomplete result. Check Your Connexion And Try Again')
+        except Exception as e:
+            st.write(f"An error occurred: {str(e)}")
+        
         ####### Handle errors ends ########
         else:
             filtered_hits = []
