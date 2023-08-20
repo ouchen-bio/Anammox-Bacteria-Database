@@ -30,7 +30,7 @@ if select=='Overview':
     This app is made using :\n 
     Streamlit - Python - Biopython - Pandas- Py3dmol - Matplotlib - Leafmap\n\n
     It is maintained by [Yassine OUCHEN](https://github.com/ouchen-bio/Anammox-Bacteria-Database)
-    Email: yassine.ouchen2021@gmail.com
+    Email: ouchen.yassine.umi@gmail.com
     LinkedIn: [Click Here](https://www.linkedin.com/in/yassine-ouchen-be)
     ''')
     # Title
